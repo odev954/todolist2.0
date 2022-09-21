@@ -9,14 +9,14 @@ function TextField(text='', taskList=null)
             let textField = document.createElement(tag);
             
             textField.classList.add(...classList); //style component
-
+            textField.setAttribute('contenteditable', 'true');
             textField.innerHTML = text;
 
             textField.addEventListener("input", (e) => {
                 this.newText = e.target.innerHTML;
             });
             textField.addEventListener('keydown', (event) => {
-                if(event.key == 'Tab') {
+                if(event.key == 'Enter' || event.key == 'Tab') {
                     this.text = this.newText;
                     this.components.textField.innerHTML = this.text;
                 }
