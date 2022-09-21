@@ -6,7 +6,7 @@ function main()
     let test2 = Task('testing this shit', 'test2', new Date(Date.now()));
     let test3 = Task('testing this shit', 'test3', new Date(Date.now()));
     let list = TaskList();
-    let ins = InsertButton(container, list);
+    let ins = InsertButton(container, list, () => rmv.setupClickEvents());
     let rmv = RemoveButton(container, list);
     container.append(list.render(['cards-grid']));
     
@@ -17,9 +17,7 @@ function main()
    
     container.append(element);
     menu.append(ins.render([]));
-    menu.append(rmv.render([]));
-    
-    ins.components.button.addEventListener('click', () => rmv.setupClickEvents());
+    menu.append(rmv.render([]));    
 }
 
 main()

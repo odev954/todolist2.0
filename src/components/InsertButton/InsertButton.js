@@ -1,14 +1,15 @@
-function InsertButton(listContainer, todoList)
+function InsertButton(listContainer, todoList, updateFunction)
 {
     return {
         todoList: todoList,
         listContainer: listContainer,
+        updateFunction: updateFunction,
         components: {},
         render: function (classList) {
             let button = document.createElement('button');
 
             button.addEventListener('click', () => {
-                let panel = InsertPanel(listContainer, todoList);
+                let panel = InsertPanel(listContainer, todoList, updateFunction);
 
                 listContainer.append(panel.render(['insert-panel']));
             });

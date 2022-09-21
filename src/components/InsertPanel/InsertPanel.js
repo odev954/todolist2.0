@@ -1,6 +1,7 @@
-function InsertPanel(listContainer, taskList)
+function InsertPanel(listContainer, taskList, updateFunction)
 {
     return {
+        updateFunction: updateFunction,
         taskList: taskList,
         components: {},
         render: function (classList)
@@ -10,6 +11,7 @@ function InsertPanel(listContainer, taskList)
             let description = TextField(text='', taskList=this.taskList);
             let titleCaption = document.createElement('h2');
             let descriptionCaption = document.createElement('h2');
+            let instructionCaption = document.createElement('h2');
             let sectionCaption = document.createElement('h1');
 
             container.classList.add(...classList); //style component
@@ -17,6 +19,7 @@ function InsertPanel(listContainer, taskList)
             titleCaption.innerHTML = 'Title:';
             descriptionCaption.innerHTML = 'Description:';
             sectionCaption.innerHTML = 'Open New Task';
+            instructionCaption.innerHTML = 'To save the task, press Enter :)';
 
             container.addEventListener('keydown', (event) => {
                 if(event.key == 'Enter') {
@@ -29,6 +32,7 @@ function InsertPanel(listContainer, taskList)
                                 taskList=this.taskList)
                         )
                     );
+                    this.updateFunction();
                     this.components.container.remove();
                 }
                 else if(event.key == 'Escape') {
@@ -42,6 +46,7 @@ function InsertPanel(listContainer, taskList)
                 title.render(),
                 descriptionCaption, 
                 description.render(),
+                instructionCaption
             );
 
             this.components.title = title;
