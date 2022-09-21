@@ -10,6 +10,7 @@ function TextField(text='', taskList=null)
             
             textField.classList.add(...classList); //style component
 
+            textField.setAttribute('contenteditable', 'true');
             textField.innerHTML = text;
 
             textField.addEventListener("input", (e) => {
@@ -19,6 +20,7 @@ function TextField(text='', taskList=null)
                 if(event.key == 'Tab') {
                     this.text = this.newText;
                     this.components.textField.innerHTML = this.text;
+                    this.taskList?.save();
                 }
                 else if(event.key == 'Escape') {
                     this.newText = this.text;
