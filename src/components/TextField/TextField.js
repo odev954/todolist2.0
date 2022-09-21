@@ -17,7 +17,7 @@ function TextField(text='', taskList=null)
                 this.newText = e.target.innerHTML;
             });
             textField.addEventListener('keydown', (event) => {
-                if(event.key == 'Tab') {
+                if(event.key == 'Enter' || event.key == 'Tab') {
                     this.text = this.newText;
                     this.components.textField.innerHTML = this.text;
                     this.taskList?.save();

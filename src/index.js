@@ -3,7 +3,7 @@ function main()
     let container = document.getElementById('test');
     let menu = document.getElementById('menu');
     let list = TaskList();
-    let ins = InsertButton(container, list);
+    let ins = InsertButton(container, list, () => rmv.setupClickEvents());
     let rmv = RemoveButton(container, list);
     let fltr = FilterButton(container, list);
     let delall = DeleteButton(container, list);
@@ -15,8 +15,6 @@ function main()
     menu.append(fltr.render([]));
     menu.append(delall.render([]));
     menu.append(delcomp.render([]));
-    
-    ins.components.button.addEventListener('click', () => rmv.setupClickEvents());
 }
 
 main()
