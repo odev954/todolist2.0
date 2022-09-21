@@ -16,6 +16,7 @@ function Task(description, title, due, completed=false, taskList=null)
                       taskList=this.taskList);
             let statusButton = TaskStatusButton(completed=this.completed, taskList=this.taskList);
 
+            container.setAttribute("draggable", "true");
             container.classList.add(...classList); //style component
 
             container.addEventListener('click', () => {
