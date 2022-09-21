@@ -27,6 +27,17 @@ function TaskList()
             this.save();
             return this.render(this.components.container.classList);
         },
+        reposition: function(sourceId, destinationId) {
+            let sourcePosition = this.tasks.findIndex((item) => sourceId == item.id);
+            let destinationPosition = this.tasks.findIndex((item) => destinationId == item.id);
+            let transferedTask = this.tasks[sourcePosition];
+            
+            this.tasks.splice(sourcePosition, 1);
+            this.tasks.splice(destinationPosition, 0, transferedTask);
+            this.save();
+            
+            return this.render(this.components.container.classList);
+        },
         filter: function(filterFunction) {
             document.getElementById(this.components.container.id)?.remove();
             return this.render(
@@ -68,6 +79,23 @@ function TaskList()
                 let renderedTask = item.task.render(['task-card']);
                 
                 renderedTask.setAttribute('id', item.id);
+
+                renderedTask.addEventListener('dragstart', (event) => {
+                    this.dragSource = event.target.id;
+                });
+
+                renderedTask.addEventListener("dragenter", (event) => {
+                    this.dragTarget = event.target.id; 
+                    event.preventDefault();                 
+                });
+                
+                renderedTask.addEventListener("dragover", (event) => {
+                    event.preventDefault();             
+                });
+                
+                renderedTask.addEventListener("drop", (event) => {
+                    this.onTaskDrop(event);
+                });
                 
                 container.append(renderedTask);
             });
@@ -77,6 +105,15 @@ function TaskList()
             this.components.container = container;
 
             return this.components.container;
+        },
+        onTaskDrop: function (event) {
+            const renderedList = this.reposition(this.dragSource, this.dragTarget);
+            const parentNode = document.getElementById(this.components.container.id)?.parentNode;
+
+            document.getElementById(this.components.container.id)?.remove();
+            parentNode.append(renderedList);
+            
+            event.preventDefault();
         },
         save: function () {
             this.tasksData = [];
