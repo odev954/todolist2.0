@@ -42,16 +42,6 @@
 	text-align: left;
 }
 
-.task-card p:hover {
-    border-radius: 20px;
-	background-color: rgb(224, 224, 224);
-}
-
-.task-card h2:hover {
-    border-radius: 20px;
-	background-color: rgb(224, 224, 224);
-}
-
 .task-card p:focus {
     border-radius: 0px;
     border-top-width: 0px;
