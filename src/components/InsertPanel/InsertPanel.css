@@ -4,13 +4,8 @@
     right: 0;
     width: 20%;
 	height: 100%;
-    margin: 2em;
     padding: .5em;
-	border-radius: 20px;
-	background-color: rgba(255, 255, 255, 0.658);
-	border-color: rgba(255, 255, 255, 0.658);
-	border-width: .25em;
-	border-style: solid;
+	background-color: rgba(0, 0, 0, 0.658);
 	display: flex;
     flex-direction: column;
 	align-self: center;
@@ -24,6 +19,7 @@
     font-weight: bold;
 	font-size: x-large;
 	text-align: center;
+    color: white;
 }
 
 .insert-panel h2 {
@@ -33,6 +29,7 @@
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: large;
 	text-align: left;
+    color: white;
 }
 
 .insert-panel p {
@@ -48,8 +45,9 @@
     border-right-width: 0px;
     border-bottom-width: .25em;
     border-style: solid;
-    border-color: rgb(255, 255, 255);
-    background-color: rgb(224, 224, 224);
+    border-color: rgb(0, 0, 0);
+    background-color: rgba(27, 27, 27, 0.89);
+    color: white;
 }
 
 .insert-panel p:focus {
